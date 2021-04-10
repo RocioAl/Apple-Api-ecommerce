@@ -17,11 +17,14 @@ app.use(express.json());
 
 // rutas
 app.use(require('./routes/index'));
-app.use('/api/products', require('./routes/products'));
-app.use('/api/products/1', require('./routes/1'));
-app.use('/api/products/2', require('./routes/2'));
-app.use('/api/products/3', require('./routes/3'));
+app.use('/products', require('./routes/products'));
+app.use('/products/1', require('./routes/1'));
+app.use('/products/2', require('./routes/2'));
+app.use('/products/3', require('./routes/3'));
 
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);
 });
+
+
+// https://apiapple.herokuapp.com/api/products/3

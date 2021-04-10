@@ -2,14 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const _ = require('underscore');
 
-const cors = require('cors');
 
-app.use(cors())
-
-
-app.get('/con-cors', cors(), (req, res, next) => {
-    res.json({ msg: 'con cors 🔝 🎉' })
-})
 const products = require('../product2.json');
 
 router.get('/', (req, res) => {

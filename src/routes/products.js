@@ -3,19 +3,17 @@ const router = Router();
 const _ = require('underscore');
 
 const products = require('../products.json');
-const products1 = require('../product1.json');
-const products2 = require('../product2.json');
-const products3 = require('../product3.json');
+
 router.get('/', (req, res) => {
     res.json(products);
 })
 router.post('/', (req, res) => {
     const { id, title, image, price, description, sentence } = req.body;
     if (id && title && image && price && description && sentence) {
-        const id = products1.length + 1;
+        const id = products.length + 1;
         const newProduct = { ...req.body, id };
-        products1.push(newProduct);
-        res.json(products1);
+        products.push(newProduct);
+        res.json(products);
     } else {
         res.send('error');
     }
@@ -24,19 +22,19 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
     if (id) {
-        _.each(products1, (product, i) => {
+        _.each(products, (product, i) => {
             if (product.id == id) {
-                products1.splice(i, 1);
+                products.splice(i, 1);
             }
         });
-        res.json(products1);
+        res.json(products);
     }
 });
 router.put('/:id', (req, res) => {
     const { id } = req.params;
     const { title, image, price, description, sentence } = req.body;
     if (id && title && image && price && description && sentence) {
-        _.each(products1, (product, i) => {
+        _.each(products, (product, i) => {
             if (product.id === id) {
                 product.id = id;
                 product.title = title;
@@ -46,12 +44,14 @@ router.put('/:id', (req, res) => {
                 product.sentence = sentence;
             }
         });
-        res.json(products1);
+        res.json(products);
     } else {
         res.status(500).json({ error: 'error' });
     }
 });
-//1
+// producto1
+
+const products1 = require('../product1.json');
 
 router.get('/', (req, res) => {
     res.json(products1);
@@ -98,7 +98,9 @@ router.put('/:id', (req, res) => {
         res.status(500).json({ error: 'error' });
     }
 });
-//
+// producto2
+const products2 = require('../product1.json');
+
 router.get('/', (req, res) => {
     res.json(products2);
 })
@@ -144,7 +146,11 @@ router.put('/:id', (req, res) => {
         res.status(500).json({ error: 'error' });
     }
 });
-//3
+// producto3
+
+
+const products3 = require('../product3.json');
+
 router.get('/', (req, res) => {
     res.json(products3);
 })
@@ -190,4 +196,5 @@ router.put('/:id', (req, res) => {
         res.status(500).json({ error: 'error' });
     }
 });
+
 module.exports = router;

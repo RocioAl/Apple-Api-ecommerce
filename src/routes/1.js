@@ -3,18 +3,18 @@ const router = Router();
 const _ = require('underscore');
 
 
-const products = require('../product1.json');
+const product1 = require('../product1.json');
 
 router.get('/', (req, res) => {
-    res.json(products);
+    res.json(product1);
 })
 router.post('/', (req, res) => {
     const { id, title, image, price, description, sentence } = req.body;
     if (id && title && image && price && description && sentence) {
-        const id = products.length + 1;
+        const id = product1.length + 1;
         const newProduct = { ...req.body, id };
-        products.push(newProduct);
-        res.json(products);
+        product1.push(newProduct);
+        res.json(product1);
     } else {
         res.send('error');
     }

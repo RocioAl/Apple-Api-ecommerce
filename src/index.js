@@ -18,6 +18,9 @@ app.use(express.json());
 // rutas
 app.use(require('./routes/index'));
 app.use('/api/products', require('./routes/products'));
+app.use('/api/products/1', require('./routes/products'));
+app.use('/api/products/2', require('./routes/products'));
+app.use('/api/products/3', require('./routes/products'));
 
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);

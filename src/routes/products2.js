@@ -1,5 +1,5 @@
 // producto2
-const products2 = require('../product1.json');
+const products2 = require('../product2.json');
 
 router.get('/', (req, res) => {
     res.json(products2);

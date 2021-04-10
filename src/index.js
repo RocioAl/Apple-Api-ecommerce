@@ -1,11 +1,6 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const cors = require('cors');
-
-app.use(cors())
-
-
 
 app.set('port', process.env.PORT || 4000);
 app.set('json spaces', 2);

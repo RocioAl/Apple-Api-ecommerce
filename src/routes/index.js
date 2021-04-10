@@ -7,4 +7,8 @@ router.get('/test', (req, res) => {
     }
     res.json(data);
 })
+
+app.get('/con-cors', cors(), (req, res, next) => {
+    res.json({ msg: 'con cors 🔝 🎉' })
+})
 module.exports = router;
